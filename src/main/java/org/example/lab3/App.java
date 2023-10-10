@@ -69,8 +69,11 @@ public class App {
         Function<Integer, Boolean> filter;
         if (base == 2) {
             filter = new IsEven();
+//            printEvenNumbers(from, to);
         } else if (base == 3) {
             filter = new IsDivisibleByThree();
+//            printNumbersDivisibleByThree(from, to);
+
         } else {
             System.out.println("Error: Invalid base. Base should be either 2 or 3.");
             return;
