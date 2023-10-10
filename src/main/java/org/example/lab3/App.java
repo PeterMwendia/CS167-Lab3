@@ -6,7 +6,7 @@ package org.example.lab3;
  */
 public class App {
     public static void printEvenNumbers(int from, int to) {
-        System.out.printf("Printing  numbers in the range [%d,%d]\n", from, to);
+        System.out.printf("Printing even numbers in the range [%d,%d]\n", from, to);
         for (int i = from; i <= to; i++) {
             if (i % 2 == 0) {
                 System.out.println(i);
@@ -15,7 +15,7 @@ public class App {
     }
 
     public static void printNumbersDivisibleByThree(int from, int to) {
-        System.out.printf("Printing numbers in the range [%d,%d]\n", from, to);
+        System.out.printf("Printing numbers divisible by 3 in the range [%d,%d]\n", from, to);
         for (int i = from; i <= to; i++) {
             if (i % 3 == 0) {
                 System.out.println(i);
