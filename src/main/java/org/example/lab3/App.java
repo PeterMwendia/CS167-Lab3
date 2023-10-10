@@ -58,13 +58,13 @@ public class App {
         int to = Integer.parseInt(args[1]);
         int base = Integer.parseInt(args[2]);
 
-        if (base == 2) {
-            printEvenNumbers(from, to);
-        } else if (base == 3) {
-            printNumbersDivisibleByThree(from, to);
-        } else {
-            System.out.println("Error: Invalid base. Base should be either 2 or 3.");
-        }
+//        if (base == 2) {
+//            printEvenNumbers(from, to);
+//        } else if (base == 3) {
+//            printNumbersDivisibleByThree(from, to);
+//        } else {
+//            System.out.println("Error: Invalid base. Base should be either 2 or 3.");
+//        }
 
         Function<Integer, Boolean> filter;
         if (base == 2) {
