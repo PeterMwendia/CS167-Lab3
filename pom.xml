@@ -46,7 +46,7 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>com.example.Main</mainClass>
+              <mainClass>org.example.lab3.Main</mainClass>
             </manifest>
           </archive>
         </configuration>
