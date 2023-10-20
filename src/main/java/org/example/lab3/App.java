@@ -95,20 +95,81 @@ public class App {
 //        printNumbers(from, to, filter);
 //    }\
 
-//    part IV
-public static void main(String[] args) {
-    if (args.length < 3) {
-        System.out.println("Error: At least three parameters expected, from, to, and base.");
-        System.exit(1);
-    }
+////    part IV
+//public static void main(String[] args) {
+//    if (args.length < 3) {
+//        System.out.println("Error: At least three parameters expected, from, to, and base.");
+//        System.exit(1);
+//    }
+//
+//    int from = Integer.parseInt(args[0]);
+//    int to = Integer.parseInt(args[1]);
+//    int base = Integer.parseInt(args[2]);
+//
+//    Function<Integer, Boolean> divisibleByBase = x -> x % base == 0;
+//
+//    printNumbers(from, to, divisibleByBase);
+//}
 
-    int from = Integer.parseInt(args[0]);
-    int to = Integer.parseInt(args[1]);
-    int base = Integer.parseInt(args[2]);
-
-    Function<Integer, Boolean> divisibleByBase = x -> x % base == 0;
-
-    printNumbers(from, to, divisibleByBase);
+//    part v
+@SafeVarargs
+public static Function<Integer, Boolean> combineWithAnd(Function<Integer, Boolean>... filters) {
+    return x -> {
+        for (Function<Integer, Boolean> filter : filters) {
+            if (!filter.apply(x)) {
+                return false;
+            }
+        }
+        return true;
+    };
 }
 
+    @SafeVarargs
+    public static Function<Integer, Boolean> combineWithOr(Function<Integer, Boolean>... filters) {
+        return x -> {
+            for (Function<Integer, Boolean> filter : filters) {
+                if (filter.apply(x)) {
+                    return true;
+                }
+            }
+            return false;
+        };
+    }
+
+    public static void main(String[] args) {
+        if (args.length < 3) {
+            System.out.println("Error: At least three parameters expected, from, to, and base.");
+            System.exit(1);
+        }
+
+        int from = Integer.parseInt(args[0]);
+        int to = Integer.parseInt(args[1]);
+
+        String[] baseStr = args[2].split("[,v]");
+        int[] bases = new int[baseStr.length];
+
+        for (int i = 0; i < baseStr.length; i++) {
+            bases[i] = Integer.parseInt(baseStr[i]);
+        }
+
+        Function<Integer, Boolean>[] filters = new Function[bases.length];
+
+        for (int i = 0; i < bases.length; i++) {
+            int base = bases[i];
+            filters[i] = x -> x % base == 0;
+        }
+
+        Function<Integer, Boolean> filter;
+
+        if (args[2].contains(",")) {
+            filter = combineWithAnd(filters);
+        } else if (args[2].contains("v")) {
+            filter = combineWithOr(filters);
+        } else {
+            System.out.println("Error: Invalid separator. Use ',' for 'and' and 'v' for 'or'.");
+            return;
+        }
+
+        printNumbers(from, to, filter);
+    }
 }
