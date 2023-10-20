@@ -45,3 +45,31 @@ To run the program, you can use the following command:
 - `<from>`: Starting range
 - `<to>`: Ending range
 - `<base>`: Criteria for divisibility (e.g., a single number, a combination using ',' for 'or' or 'v'
+
+## Function Composition
+
+This program demonstrates function composition to filter and print numbers based on divisibility by specific criteria. It provides two types of filters: 'and' and 'or', depending on the input separator (',' or 'v').
+
+## Function Definitions
+
+- `combineWithAnd`: Combines filters using 'and'.
+- `combineWithOr`: Combines filters using 'or'.
+
+## Example Usage
+
+To filter numbers divisible by 5:
+
+```bash
+java -jar target/lab3-1.0-SNAPSHOT.jar 3 20 5
+```
+
+To filter numbers divisible by either 3 or 5:
+
+```bash
+java -jar target/lab3-1.0-SNAPSHOT.jar 3 20 "3v5"
+```
+
+To filter numbers divisible by both 3 and 5:
+```bash
+  java -jar target/lab3-1.0-SNAPSHOT.jar 3 20 "3,5"
+```
